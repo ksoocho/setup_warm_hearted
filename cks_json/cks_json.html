@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>jQuery PHP Json Response</title>
+<style type="text/css">
+div
+{
+text-align:center;
+padding:10px;
+}
+ 
+#msg {
+width: 500px;
+margin: 0px auto;
+}
+.members {
+width: 500px ;
+background-color: beige;
+}
+</style>
+</head>
+<body>
+<div id="msg">
+<table id="userdata" border="1">
+<thead>
+<th>Photo Id</th>
+<th>Photo Name</th>
+<th>Photo Title</th>
+<th>Photo Content</th>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script type="text/javascript">
+ 
+$(document).ready(function(){
+var url="http://ksoocho.3owl.com/cks_json/json_test_list.php";
+$("#userdata tbody").html("");
+$.getJSON(url,function(data){
+$.each(data.members, function(i,photo){
+var tblRow =
+"<tr>"
++"<td>"+photo.photo_id+"</td>"
++"<td>"+photo.photo_name+"</td>"
++"<td>"+photo.photo_title+"</td>"
++"<td>"+photo.photo_content+"</td>"
++"</tr>" ;
+$(tblRow).appendTo("#userdata tbody");
+});
+});
+});
+ 
+</script>
+</body>
+</html>
